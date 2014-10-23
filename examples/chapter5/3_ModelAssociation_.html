@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Table Layout</title>
+    <link rel="stylesheet" type="text/css"
+          href="/ext/packages/ext-theme-gray/build/resources/ext-theme-gray-all-debug.css">
+    <script type="text/javascript" src="/ext/ext-all-debug.js"></script>
+
+</head>
+<body>
+<script type="text/javascript">
+    Ext.Loader.setConfig({
+        enabled: true,
+        paths: {
+            'ext5': '/app'
+        }
+    });
+Ext.require([
+    'Ext.Component',
+    'ext5.model.ticket.User',
+    'ext5.model.ticket.Organization',
+    'ext5.model.ticket.Project',
+    'ext5.model.ticket.Group'
+]);
+
+Ext.onReady(function () {
+
+        /***
+         * Case2 유저 아이디를 알고 한건의 유저 정보를 얻는다.
+         */
+//        var user = ext5.model.ticket.User.load(2, {
+//             success: function (record, operation) {
+//                 console.log(record.data)
+//             }
+//         });
+
+        /***
+         * Case2 (Case1)에서 얻은 유저 정보로 자신이 속한 조직(Organization)정보를
+         * 얻는다.
+         * 이때 User모델에는 아래 코드가 필요하다.
+         * fields: [{
+         *         name: 'organizationId', reference: 'Organization'
+         *         }]
+         * 이 코드는 User모델이 가지고 있는 organizationId를 통해 Organization모델을 얻는 것이다.
+         */
+//         var user = ext5.model.ticket.User.load(2, {
+//             success: function (record, operation) {
+//                console.log(record.getOrganization());
+//             }
+//         });
+
+        /***
+         * Case3 프로젝트 vs 유저 >> 1 vs 다 관계이디.
+         * User모델에 아래 필드를 추가한다.
+         * name: 'projectId', reference: 'Project'
+         *
+         * 유저 입장에서 자신이 속한 프로젝트는 하나이다.
+         */
+         /*ext5.model.ticket.User.load(2, {
+             success: function (record, operation) {
+                 //자신이 속한 프로젝트를 얻어온다.
+                 // 단건이다.
+                 //                record.set('projectId', '');  // 프로젝트 아이디를 지우면 구하지 않는다.
+                 record.getProject({
+                     callback: function(project){
+                         console.log('item', project.data);
+
+                         // 구해온 프로젝트에 등록된 여러명의 유저를 찾는다.
+                         project.users().load();    // 프로젝트 아이디로 등록된 유저를 모두 찾는다.
+                     }
+                 });
+
+             }
+         });*/
+
+        /***
+         * Case 4 조직 vs 프로젝트 (1 vs 다 관계)
+         */
+        ext5.model.ticket.Organization.load(1, {
+            success: function (org, operation) {
+                console.log('조직정보:', org.data);
+                // 조직 밑의 다수의 프로젝트
+                org.projects().load({
+                    callback: function (projects) {
+                        console.log('조직에 포함된 프로젝트 총 : ' , projects.length);
+                        Ext.each(projects, function(project, idx){
+                            console.log('No:', idx, '프로젝트 정보 ', project.data);
+                        })
+                    }
+                });
+
+//                // 1 VS 다 관계 (조직 대 그룹)
+//                org.groups().load({  // 여러건
+//                    params: {
+//                        id: 1  // 그룹아이디를 알 경우 한건
+//                    },
+//                    callback: function(groups){
+//                        console.log('조직을 통해 그룹데이터 총 : ', groups.length);
+//                        Ext.each(groups, function(group, idx){
+//                            console.log('No:', idx, '그룹 정보 ', group.data);
+//                        })
+//                    }
+//                });
+            }
+        });
+
+        // 1 vs 1 프로젝트의 leadId를 통해 유저정보를 얻어온다.
+//        ext5.model.ticket.Project.load(2, {
+//            callback: function (record, operation) {
+//                record.getLead({
+//                    callback: function(leader){
+//                        console.log('프로젝트를 통해 얻어온 리더의 정보는 : ', leader.data)
+//                    }
+//                })
+//            }
+//        });
+
+//        Ext.create('Ext.data.Store', {
+//            model : 'ext5.model.ticket.Organization',
+//            autoLoad: true
+//        })
+
+//        ext5.model.ticket.Group.load(3, {
+//            success: function (record, operation) {
+//                console.log(record.users().load())
+//            }
+//        });
+
+
+
+    })
+
+</script>
+</body>
+</html>

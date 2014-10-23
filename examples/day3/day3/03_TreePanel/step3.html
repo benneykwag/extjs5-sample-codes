@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Fit Layout</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+    <script src="/ext/ext-all-dev.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    Ext.onReady(function () {
+        var onConfirmDelete = Ext.emptyFn;
+        var onDelete = Ext.emptyFn;
+        var onEdit = Ext.emptyFn;
+        var onAdd = Ext.emptyFn;
+
+        var buildCtxMenu = function () {
+            return Ext.create('Ext.menu.Menu', {
+                items: [
+                    {
+                        itemId: 'add',
+                        handler: onAdd
+                    },
+                    {
+                        itemId: 'edit',
+                        handler: onEdit
+                    },
+                    {
+                        itemId: 'delete',
+                        handler: onDelete
+                    }
+                ]
+            })
+        }
+        var onCtxMenu = function (view, record, element, index, evtObj) {
+            view.select(record);
+            evtObj.stopEvent();
+            if (!this.ctxMenu) {
+                this.ctxMenu = buildCtxMenu();
+            }
+            this.ctxMenu.treeNode = record;
+            this.ctxMenu.treeView = view;
+
+            var ctxMenu = this.ctxMenu;
+            var addItem = ctxMenu.getComponent('add');
+            var editItem = ctxMenu.getComponent('edit');
+            var deleteItem = ctxMenu.getComponent('delete');
+
+            if (record.getId() == 'mycompany') {
+                addItem.setText('Add Department');
+                editItem.setText('Nope, not changing the name');
+                deleteItem.setText('Can\'t delete a company, silly');
+                addItem.enable();
+                deleteItem.disable();
+                editItem.disable();
+            } else if (!record.isLeaf()) {
+                addItem.setText('Add Employee');
+                deleteItem.setText('Delete Department');
+                editItem.setText('Edit Department');
+                addItem.enable();
+                editItem.enable();
+                deleteItem.enable();
+            } else {
+                addItem.setText('Can\'t Add Employee');
+                editItem.setText('Edit Employee');
+                deleteItem.setText('Delete Employee');
+                addItem.disable();
+                editItem.enable();
+                deleteItem.enable();
+            }
+            ctxMenu.showAt(evtObj.getXY());
+        }
+        var store = Ext.create('Ext.data.TreeStore', {
+            autoSync: true,
+            proxy: {
+                type: 'jsonp',
+                url: 'http://extjsinaction.com/treeData.php'
+            },
+            root: {
+                text: 'My Company',
+                id: 'mycompany',
+                expanded: true
+            }
+        })
+
+        Ext.create('Ext.window.Window', {
+            title: 'Our first remote tree', layout: 'fit',
+            autoShow: true,
+            height: 360,
+            width: 280,
+            items: {
+                xtype: 'treepanel',
+                store: store,
+                listeners: {
+                    itemcontextmenu: onCtxMenu
+                }
+            }
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+    "success": true,
+    "email":'master@extjs.com',
+    "name":"홍길동",
+    "gender":"M",
+    "createDate": '2013.01.10'
+}

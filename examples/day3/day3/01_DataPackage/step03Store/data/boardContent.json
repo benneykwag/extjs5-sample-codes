@@ -1,0 +1,29 @@
+{
+    success: true,
+    data: [
+        {
+            "boardId": 11,
+            "contentId": 100,
+            "subject": "ExtJS에 대한 1번 질문입니다.",
+            "content": "Model에 대한 궁금증.",
+            "createEmail": "extjs1@mail.com",
+            "createDate": '2013-12-03'
+        },
+        {
+            "boardId": 11,
+            "contentId": 200,
+            "subject": "ExtJS에 대한 2번 질문입니다.",
+            "content": "Model에 대한 궁금증.",
+            "createEmail": "extjs1@mail.com",
+            "createDate": '2013-12-13'
+        },
+        {
+            "boardId": 11,
+            "contentId": 300,
+            "subject": "ExtJS에 대한 3번 질문입니다.",
+            "content": "Model에 대한 궁금증.",
+            "createEmail": "extjs1@mail.com",
+            "createDate": '2013-12-02'
+        }
+    ]
+}
