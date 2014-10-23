@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ext.data.Store</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+    <script src="/ext/ext-all-dev.js"></script>
+    <script>
+
+        Ext.Loader.setConfig({
+            enabled: true,
+            paths: {
+                'MyApp': 'app'
+            }
+        });
+
+        Ext.require('MyApp.model.BoardContent');
+
+
+        Ext.onReady(function () {
+            // step 1 Store의 생성
+            var store = Ext.create('Ext.data.Store', {  // #1
+                model: 'MyApp.model.BoardContent',      // #2
+                autoLoad: true,                         // #3
+                proxy: {                                // #4
+                    type: 'ajax',
+                    actionMethods: {
+                        read: 'GET',
+                        create: 'POST',
+                        update: 'POST',
+                        destroy: 'POST'
+                    },
+                    api: {
+                        read: 'data/boardContent.json?read',
+                        create: 'data/create.json',
+                        update: 'data/update.json',
+                        destroy: 'data/destroy.json'
+                    },
+                    reader: {
+                        type: 'json',
+                        root: 'data'
+                    },
+                    writer: {
+                        type: 'json',
+                        allowSingle: false
+                    }
+                }
+            });
+
+            var storeLoopFunc = function (innerStore) {    // #1
+                console.log('--- 총 로우수는 : ', innerStore.count());    // #2
+                innerStore.each(function (record) {
+                    console.log(
+                            'boardId : ', record.get('boardId'),
+                            'contentId : ', record.get('contentId'),
+                            'subject : ', record.get('subject')
+                    );
+                });
+            };
+
+            // load이벤트 리스닝
+            store.on('load', function (records) {
+
+                var boardContent = Ext.create('MyApp.model.BoardContent', {
+                    boardId: 1000,
+                    contentId: 1011,
+                    subject: '모델을 Store에 추가합니다.',
+                    content: 'Store는 모델의 집합입니다.',
+                    createEmail: 'benneykwag@gmail.com'
+                });
+
+                store.insert(1, boardContent);
+
+                var count = store.count();
+                for (var idx = 0; idx < count; idx++) {
+                    var record = store.getAt(idx);
+                    console.log(                            // #2
+                            '(', idx, '/', count, ')',
+                            'boardId : ', record.get('boardId'),
+                            'contentId : ', record.get('contentId'),
+                            'subject : ', record.get('subject')
+                    );
+                }
+
+                var first = store.first(),
+                        last = store.last();
+
+                console.log('첫번째 레코드 : ', first.data);
+                console.log('마지막 레코드 : ', last.data);
+
+                var list = store.getRange(0, 3);
+                Ext.each(list, function (record, index) {
+                    console.log(index, record.data);
+                });
+
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{entitys: [
+    {
+        "Title": "ExtJS4CookBook",
+        "Publisher": "PacktPublishing",
+        "ISBN": "978-1-849516-86-0",
+        "PublishDate": "01-01-2012",
+        "NumberOfPages": 300,
+        "Read": false,
+        "book_id": 1,
+        "authors": [
+
+        ]
+    },
+    {
+        "Title": "ExtJS4CookBook222",
+        "Publisher": "122",
+        "ISBN": "978-1-849516-86-0",
+        "PublishDate": "01-01-2012",
+        "NumberOfPages": 300,
+        "Read": false,
+        "book_id": 2,
+        "authors": [
+
+        ]
+    }
+],
+    total : 100,
+success: true
+}
