@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Ext.data.Store</title>
+    <link rel="stylesheet" href="/bootstrap.css">
+    <script src="/ext/ext-all-dev.js"></script>
+    <script>
+
+        Ext.Loader.setConfig({
+            enabled: true,
+            paths: {
+                'MyApp': 'app'
+            }
+        });
+
+
+        Ext.require('MyApp.model.BoardContent');
+
+
+        Ext.onReady(function () {
+            // step 1 Store의 생성
+            var store = Ext.create('Ext.data.Store', {  // #1
+                model: 'MyApp.model.BoardContent',      // #2
+                autoLoad: true,                         // #3
+                proxy: {                                // #4
+                    type: 'ajax',
+                    actionMethods: {
+                        read: 'GET',
+                        create: 'POST',
+                        update: 'POST',
+                        destroy: 'POST'
+                    },
+                    api: {
+                        read: 'data/boardContent.json?read',
+                        create: 'data/create.json',
+                        update: 'data/update.json',
+                        destroy: 'data/destroy.json'
+                    },
+                    reader: {
+                        type: 'json',
+                        root: 'data'
+                    },
+                    writer: {
+                        type: 'json',
+                        allowSingle: false  // 배열 하나로 전달.
+                    }
+                }
+            });
+
+            var storeLoopFunc = function (innerStore) {    // #1
+                console.log('--- 총 로우수는 : ', innerStore.count());    // #2
+                innerStore.each(function (record) {
+                    console.log(
+                            'boardId : ', record.get('boardId'),
+                            'contentId : ', record.get('contentId'),
+                            'subject : ', record.get('subject')
+                    );
+                });
+            };
+
+            // load이벤트 리스닝
+            store.on('load', function (records) {
+
+                // case 7 수정된 레코드 찾기.
+
+                store.add(Ext.create('MyApp.model.BoardContent', {
+                    boardId: 1000,
+                    // contentId : 101,   // #2
+                    subject: '2. 모델을 Store에 추가합니다.',
+                    content: '2. Store는 모델의 집합입니다.',
+                    createEmail: 'benneykwag@gmail.com'
+                }));
+                // 아래 코드를 실행할 경우 수정한 대상에 포함된다.
+//                store.commitChanges();
+
+                store.first().set('subject', '첫 번째 레코드를 변경합니다.');
+                var last = store.last();
+                last.set('subject', '마지막 레코드를 변경합니다.');
+
+                //                getUpdatedRecord메소드는 수정 된 레코드만 추출한다.
+                //                위에서 last레코드를 수정했지만 아래 탐색조건에 걸리지 않는다.
+                //                이는 last레코드의 idProperty에 해당하는 필드에 값이 없어서 이다.
+                //                idProperty필드에 값이 없다는 것은 정상적인 데이터로 인식하지 않는다.(디비에 저장되지 않은 상태로 봄)
+                var updated = store.getUpdatedRecords(); //Step 3
+                Ext.each(updated, function (record, index) {
+                    console.log(record.getId(), record.get("subject"));
+                });
+                storeLoopFunc(store);
+//
+                console.log(store.count());
+
+                store.sync({
+                    success: function (batch) {
+                        console.log('처리에 성공..');
+                    },
+                    failure: function (batch) {
+                        console.log('처리에 실패..')
+                    },
+                    callback: function (batch) {
+                    }
+                });   // 수정
+            });
+
+
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

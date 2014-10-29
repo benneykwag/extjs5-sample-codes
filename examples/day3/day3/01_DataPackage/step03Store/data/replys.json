@@ -1,0 +1,24 @@
+{
+    "success": true,
+    "total" : 10,
+    "entitys": [
+        {
+            "content": "댓글 1~",
+            "userName": "홍길동",
+            "sequence": 33,
+            "reply_sequence": 1
+        },
+        {
+            "content": "댓글 2~",
+            "userName": "철수",
+            "sequence": 33,
+            "reply_sequence": 2
+        },
+        {
+            "content": "댓글 3~",
+            "userName": "영희",
+            "sequence": 33,
+            "reply_sequence": 3
+        }
+    ]
+}
