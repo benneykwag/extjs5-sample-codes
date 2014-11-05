@@ -84,7 +84,7 @@ Ext.define('ext5.view.frame.dashboard.TargetReport', {
         var store = Ext.create('Ext.data.Store', {  // #8
             autoLoad: true,
             proxy: {
-                url: 'http://extuxgroup.com/resources/json/targetlist.jsp', // #9
+                url: 'http://extuxgroup.com/resources/data/targetlist.jsp', // #9
                 type: 'jsonp',  // #10
                 reader: {
                     type: 'array'   // #11
