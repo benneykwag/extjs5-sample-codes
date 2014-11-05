@@ -1,4 +1,4 @@
-$image-search-path: 'C:/DevWork/java-workspace/ExtJS5/WebContent/MyExtJS/build/development/ext5/resources';
+$image-search-path: '/Volumes/Disk2/DevRoot/Sencha/git.home/extjs5-sample-codes/build/development/ext5/resources';
 $theme-name:  'ext-theme-gray' !default;
 $include-ext-abstractmanager: true;
 $include-ext-action: true;
