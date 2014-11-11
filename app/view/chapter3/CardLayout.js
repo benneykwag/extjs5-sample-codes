@@ -11,16 +11,15 @@ Ext.define('ext5.view.chapter3.CardLayout', {
     title: 'Card Layout',
     width: 350,
     height: 150,
-    layout:{
-
-    type: 'card',        // #1
-  	    deferredRender: true
+    layout: {
+        type: 'card',        // #1
+        deferredRender: true
     },
 
     initComponent: function () {
         var me = this;
         Ext.apply(me, {
-            bbar: [ '->', { // #2
+            bbar: ['->', { // #2
                 xtype: 'button',    // #3
                 text: '이전',
                 handler: function (btn) {   // #4
@@ -42,7 +41,7 @@ Ext.define('ext5.view.chapter3.CardLayout', {
                         me.cardInfo();      // #11
                     }
                 }
-            } ],
+            }],
             items: [    // #12
                 {
                     xtype: 'chapter3-cardchild1'

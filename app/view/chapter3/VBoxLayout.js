@@ -6,7 +6,7 @@ Ext.define('ext5.view.chapter3.VBoxLayout', {
     height: 300,
     layout: {
         type: 'vbox',
-        align : 'stretchmax',
+        //align : 'stretchmax',
         padding: 10
     },
     items: [

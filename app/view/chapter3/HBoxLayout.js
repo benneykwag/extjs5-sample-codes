@@ -10,7 +10,7 @@ Ext.define('ext5.view.chapter3.HBoxLayout', {
     items : [ {
         xtype : 'panel',
         title : '첫번째 패널',
-        html : '가로 200px <br>세로 100px',
+        html : '가로 100px <br>세로 200px',
         height : 200,
         width : 100
     }, {
