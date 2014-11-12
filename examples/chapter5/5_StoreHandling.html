@@ -64,11 +64,13 @@
 //            organizationId: 1
 //        });
 //        store.add(user);		// #2
+//
 //        store.insert(0, {
 //            name: "홍길동",
 //            projectId: 2,
 //            organizationId: 1
 //        });
+//
 //        var arrayModel = [];        // #1
 //        for (var i = 0; i < 5; i++) {    // #2
 //            arrayModel.push({ // #3
@@ -78,6 +80,7 @@
 //            });
 //        }
 //        store.add(arrayModel);  // #5
+//
 //        var newRecords = store.getNewRecords();	// #6
 //        Ext.each(newRecords, function (record, index) {	// #7
 //            console.log('New (', index, ')', record.get('name'));	// #8
@@ -105,7 +108,7 @@
                 writer: {
                     type: 'json',
                     allowSingle: false,  // 배열 하나로 전달.
-                    writeAllFields: false
+                    writeAllFields: true
                 },
                 reader: {             // #11
                     type: 'json',
@@ -124,7 +127,7 @@
 //                console.log('New (', index, ')', record.data);
 //            });
 //            store.sync();	// #6
-
+//
             console.log('삭제 전 : 총 ', groups.count() , '건'); // #1
             var first = groups.first(),          // #2
                     last = groups.last();
