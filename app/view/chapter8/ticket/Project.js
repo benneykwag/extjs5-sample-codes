@@ -30,8 +30,7 @@ Ext.define('ext5.view.chapter8.ticket.Project', {
                 {
                     text: 'Name',
                     dataIndex: 'name',
-                    flex: 1,
-                    field: 'textfield'
+                    flex: 1
                 }
             ]
         },
