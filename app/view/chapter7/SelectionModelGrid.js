@@ -1,7 +1,14 @@
 Ext.define('ext5.view.chapter7.SelectionModelGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.chapter7-selectionmodelgrid',        // #1
-    requires: ['ext5.model.smpl.Order'],
+    requires: [
+        'Ext.grid.column.RowNumberer',
+        'Ext.grid.column.Template',
+        'Ext.grid.column.Boolean',
+        'Ext.grid.column.Action',
+        'ext5.model.smpl.Order',
+        'Ext.util.TaskManager'
+    ],
     height: 200,
     columnLines: true,
     initComponent: function () {

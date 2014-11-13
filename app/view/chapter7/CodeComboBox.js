@@ -10,7 +10,7 @@ Ext.define('ext5.view.chapter7.CodeComboBox', {
     },
     initComponent: function () {
         var me = this;
-        me.initConfig();    // #7
+        //me.initConfig();    // #7
         this.store = Ext.create('Ext.data.Store', { // #8
             autoLoad : me.preload,  // #9
             fields: ['codeNm', 'codeCd', 'grpCd', 'grpNm'],

@@ -131,7 +131,7 @@ Ext.define('ext5.view.chapter7.CellEditingGrid', {
                     return '총 '+value+'건';
                 },
                 editor: {
-                    xtype: 'chapter6-codecombo',    // #1
+                    xtype: 'chapter7-codecombo',    // #1
                     preload: true,          // #2
                     filterCd: 'G002',        // #3
                     allowBlank: false

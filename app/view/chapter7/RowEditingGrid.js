@@ -145,22 +145,21 @@ Ext.define('ext5.view.chapter7.RowEditingGrid', {
 
             },
 
-{
-    text: '회원여부',
-    align: 'center',
-    width: 100,
-    dataIndex: 'isMember',
-    xtype: 'booleancolumn',
-    trueText: '회원구매',
-    falseText: '비회원구매',
-    editor: {
-                    xtype: 'textfield',
-//        xtype: 'chapter7-codecombo',    // #1
-        preload: true,          // #2
-        filterCd: 'G001',        // #3
-        allowBlank: false
-    }
-},
+            {
+                text: '회원여부',
+                align: 'center',
+                width: 100,
+                dataIndex: 'isMember',
+                xtype: 'booleancolumn',
+                trueText: '회원구매',
+                falseText: '비회원구매',
+                editor: {
+                    xtype: 'chapter7-codecombo',    // #1
+                    preload: true,          // #2
+                    filterCd: 'G001',        // #3
+                    allowBlank: false
+                }
+            },
             {
                 text: '고객평가',
                 align: 'center',
