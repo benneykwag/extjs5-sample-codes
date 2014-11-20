@@ -38,8 +38,6 @@ Ext.define('ext5.view.main.MainController', {
         treeNav.hide(); // #7
         refs.contentPanel.getHeader().hide();   // #8
 
-        this._hasTreeNav = false;   // #9
-
         this._hasTreeNav = false;   // #1
         this.getView().saveState();  // #2
     },
@@ -64,8 +62,6 @@ Ext.define('ext5.view.main.MainController', {
 
         breadcrumbNav.hide();   // #13
         refs.contentPanel.getHeader().show();  // #14
-        this._hasTreeNav = true;    // #15
-
         this._hasTreeNav = true;    // #3
         this.getView().saveState();  // #4
     },

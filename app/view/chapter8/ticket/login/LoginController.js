@@ -28,7 +28,7 @@ Ext.define('ext5.view.chapter8.ticket.login.LoginController', {
 
     login: function(options) {
         Ext.Ajax.request({
-            url : '../../resources/data/authenticate.json',     // #1
+            url : 'resources/data/authenticate.json',     // #1
             method: 'GET',
             params: options.data,      // #2
             scope: this,
