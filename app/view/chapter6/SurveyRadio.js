@@ -27,6 +27,7 @@ Ext.define('ext5.view.chapter6.SurveyRadio', {
                 data: eval('ext5.view.chapter6.DataSet.'+me.code)
             });
             store.each(function(item, idx){
+                console.log('No:', idx, 'Value', item.data)
                 me.add({
                     xtype: 'radiofield',
                     name : me.code,

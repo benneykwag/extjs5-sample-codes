@@ -5,7 +5,7 @@ Ext.define('ext5.view.chapter7.GroupChangeCombo', {
     valueField: 'grpCd',
     emptyText : '그룹핑 변경',
     editable: false,
-    xtype: 'chapter6-grpchgcbx',         // #2
+    xtype: 'chapter7-grpchgcbx',         // #2
     initComponent: function () {
         var me = this;
         me.callParent(arguments);
@@ -32,8 +32,6 @@ Ext.define('ext5.view.chapter7.GroupChangeCombo', {
                     return data;    // #16
                 }()
             });
-        Ext.apply(this, {   // #17
-            store: store    // #18
-        });
+            this.bindStore(store);
     }
 });
