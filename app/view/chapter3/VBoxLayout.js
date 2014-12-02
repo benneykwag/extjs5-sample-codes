@@ -27,7 +27,7 @@ Ext.define('ext5.view.chapter3.VBoxLayout', {
         {
             xtype: 'panel',
             title: '세번째 패널',
-            html: '너비 200px <br>높이 50px',
+            html: '너비 200px <br>높이 100px',
             height: 100,
             width: 200
         }

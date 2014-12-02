@@ -1,5 +1,4 @@
-{
-    entitys: [
+{    entitys: [
         {
             id: 2,
             name: "이순신",

@@ -1,7 +1,13 @@
 Ext.define('ext5.view.chapter7.RendererGrid', {
     extend: 'Ext.grid.Panel',
     alias: 'widget.chapter7-renderergrid',
-    requires: ['ext5.model.smpl.Order'],
+    requires: [
+        'Ext.grid.column.RowNumberer',
+        'Ext.grid.column.Template',
+        'Ext.grid.column.Boolean',
+        'Ext.grid.column.Action',
+        'ext5.model.smpl.Order'
+    ],
     height: 200,
     columnLines: true,
     initComponent: function () {
