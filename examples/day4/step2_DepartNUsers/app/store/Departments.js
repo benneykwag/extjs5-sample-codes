@@ -9,7 +9,7 @@ Ext.define('AM.store.Departments',{
 		},
 		reader : {
 			type : 'json',
-			root : 'departments',
+			rootProperty : 'departments',
 			successProperty : 'success'
 		}
 	}

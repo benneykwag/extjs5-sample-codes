@@ -9,8 +9,7 @@ Ext.define('dog.view.DogGrid', {
             store: Ext.create('dog.store.Dogs'),
             columns: this.getColumnConfig()
         });
-        me.addEvents('dogselected');
-
+        
         me.callParent(arguments);
 
         me.on('render', function(){

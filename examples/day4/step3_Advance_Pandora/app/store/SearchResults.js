@@ -11,7 +11,7 @@ Ext.define('Pandora.store.SearchResults', {
         url: 'data/searchresults.json',
         reader: {
             type: 'json',
-            root: 'results'
+            rootProperty: 'results'
         }
     }
 });

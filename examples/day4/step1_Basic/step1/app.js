@@ -25,7 +25,7 @@ Ext.onReady(function(){
 					url:'data/dogs.js',
 					reader:{
 						type : 'json',
-						root: 'entitys'
+						rootProperty: 'entitys'
 					}
 				}
 			},
