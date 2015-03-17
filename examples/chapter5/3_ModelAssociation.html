@@ -30,22 +30,22 @@ Ext.onReady(function () {
             console.log('No : '+idx, rec.data)	// #3
         })
     };
-//   var user = ext5.model.ticket.Organization.load(1, {     // #1
-//        success: function (org, operation) {    // #2
-//            console.log('조직정보 : ', org.data) // #3
-//            // 이후 구현함.
-//            org.projects().load({	// #1
-//                callback: function (records) {	// #2
-//                    eachRecord(records, 'Organization(1) > Project(n)'); // #3
-//                }
-//            });
-//            org.users().load({
-//                callback: function (records) {
-//                    eachRecord(records, 'Organization(1) > User(n)')
-//                }
-//            });
-//        }
-//   });
+   var user = ext5.model.ticket.Organization.load(1, {     // #1
+        success: function (org, operation) {    // #2
+            console.log('조직정보 : ', org.data) // #3
+            // 이후 구현함.
+            org.projects().load({	// #1
+                callback: function (records) {	// #2
+                    eachRecord(records, 'Organization(1) > Project(n)'); // #3
+                }
+            });
+            org.users().load({
+                callback: function (records) {
+                    eachRecord(records, 'Organization(1) > User(n)')
+                }
+            });
+        }
+   });
 
 //   ext5.model.ticket.User.load(2, {	// #1
 //        success: function (record, operation) {
