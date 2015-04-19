@@ -1,6 +1,7 @@
 Ext.define('ext5.store.Navigation', {
     extend: 'Ext.data.TreeStore',
     alias: 'store.navigation',
+    model: 'ext5.model.TreeBase',
     constructor: function(config) {
         var me = this;
 

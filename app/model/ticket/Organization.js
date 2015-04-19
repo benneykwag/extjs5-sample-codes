@@ -1,6 +1,6 @@
 Ext.define('ext5.model.ticket.Organization', {
-    extend: 'ext5.model.ticket.Base',
-    proxy: {
+    extend: 'ext5.model.ticket.Base'
+    /*proxy: {
         type: 'jsonp',
         actionMethods: {       // #1
             read: 'GET',       // #2
@@ -22,5 +22,5 @@ Ext.define('ext5.model.ticket.Organization', {
             type: 'json',
             rootProperty: 'entitys'
         }
-    }
+    }*/
 });

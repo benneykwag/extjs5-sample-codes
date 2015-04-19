@@ -5,7 +5,7 @@ Ext.define('ext5.model.ticket.Group', {
         {name: 'organizationId', reference: 'Organization'},
 
         {name: 'userId', reference: 'User'}
-    ],
+    ]/*,
 
     proxy: {
         type: 'jsonp',
@@ -29,5 +29,5 @@ Ext.define('ext5.model.ticket.Group', {
             type: 'json',
             rootProperty: 'entitys'
         }
-    }
+    }*/
 });

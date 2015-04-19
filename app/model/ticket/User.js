@@ -7,7 +7,7 @@ Ext.define('ext5.model.ticket.User', {
         {
             name: 'projectId', reference: 'Project'
         }
-    ],
+    ]/*,
     proxy: {
         type: 'jsonp',
         actionMethods: {       // #1
@@ -30,5 +30,5 @@ Ext.define('ext5.model.ticket.User', {
             type: 'json',
             rootProperty: 'entitys'
         }
-    }
+    }*/
 });

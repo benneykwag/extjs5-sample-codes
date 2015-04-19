@@ -10,7 +10,7 @@ Ext.define('ext5.model.ticket.Project', {
             unique: true,       // 결과는 한건이여야 한다.
             reference: 'User'
         }
-    ],
+    ]/*,
     proxy: {
         type: 'jsonp',
         actionMethods: {       // #1
@@ -33,5 +33,5 @@ Ext.define('ext5.model.ticket.Project', {
             type: 'json',
             rootProperty: 'entitys'
         }
-    }
+    }*/
 });
