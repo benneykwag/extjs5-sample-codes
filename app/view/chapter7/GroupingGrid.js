@@ -157,9 +157,9 @@ Ext.define('ext5.view.chapter7.GroupingGrid', {
                     return '';
                 },
                 summaryType: 'count', // #12
-                summaryRenderer: function(value, summaryData, dataIndex) {
-                     return Ext.String.format('{0} student{1}', value, value !== 1 ? 's' : '');
-                }
+//                summaryRenderer: function(value, summaryData, dataIndex) {
+//                     return Ext.String.format('{0} student{1}', value, value !== 1 ? 's' : '');
+//                }
                 summaryRenderer: function (value) {
                      return '총 ' + value + '건';
                 }
